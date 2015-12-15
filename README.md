@@ -1,4 +1,6 @@
-Nginx Docker image.
+Nginx 1.9.9 Docker image with HTTP/2 support, most other modules included.
+
+To avoid problems with HTTP/2, DO NOT enable `ssl_prefer_server_ciphers`!
 
 If no configuration provided, this image put default config to /data/conf folder. Default configuration contains no virtual hosts so nginx will not listen any ports until
 virtual host config added.

@@ -8,4 +8,4 @@ cp -r /data/conf/* /etc/nginx/
 mkdir -p /data/data/proxy_temp
 mkdir -p /data/logs
 
-exec nginx $@
+exec /usr/share/nginx/sbin/nginx $@

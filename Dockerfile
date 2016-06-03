@@ -3,15 +3,15 @@ FROM scf37/base
 RUN apt-get update && \
     apt-get install -y make g++ libssl-dev libxslt-dev libgd2-xpm-dev libgeoip-dev libpam-dev && \
     cd /opt && \
-    wget http://nginx.org/download/nginx-1.9.15.tar.gz && \
-    tar xfz nginx-1.9.15.tar.gz && \
+    wget http://nginx.org/download/nginx-1.11.1.tar.gz && \
+    tar xfz nginx-1.11.1.tar.gz && \
     wget http://zlib.net/zlib-1.2.8.tar.gz && \
     tar xfz zlib-1.2.8.tar.gz && \
     wget ftp://ftp.csx.cam.ac.uk/pub/software/programming/pcre/pcre-8.37.tar.bz2 && \
     tar xfj pcre-8.37.tar.bz2 && \
     wget https://www.openssl.org/source/openssl-1.0.2h.tar.gz && \
     tar xfz openssl-1.0.2h.tar.gz && \
-    cd /opt/nginx-1.9.15 && \
+    cd /opt/nginx-1.11.1 && \
     ./configure --with-http_v2_module \
 	--conf-path=/etc/nginx/nginx.conf \
 	--with-zlib=../zlib-1.2.8 \

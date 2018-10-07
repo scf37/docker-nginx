@@ -1,4 +1,4 @@
-Nginx 1.13.8 Docker image with HTTP/2 support, most other modules included.
+Nginx 1.15.5 Docker image with HTTP/2 support, most other modules included.
 
 To avoid problems with HTTP/2, DO NOT enable `ssl_prefer_server_ciphers`!
 

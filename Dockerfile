@@ -5,7 +5,19 @@ ENV OPENSSL_VERSION 1.1.1
 ENV PCRE_VERSION 8.41
 ENV ZLIB_VERSION 1.2.11
 
-RUN apt-get update && \
+# Using master from ngx_brotli
+# Using brotli linked from ngx_brotli master at /deps/brotli (see https://github.com/google/ngx_brotli/tree/master/deps)
+ENV NGX_BROTLI_VERSION bfd2885b2da4d763fed18f49216bb935223cd34b
+ENV BROTLI_VERSION 222564a95d9ab58865a096b8d9f7324ea5f2e03e
+
+RUN cd /opt && \
+    wget https://github.com/google/ngx_brotli/archive/$NGX_BROTLI_VERSION.zip -O ngx_brotli.zip && \
+    wget https://github.com/google/brotli/archive/$BROTLI_VERSION.zip -O brotli.zip && \
+    unzip ngx_brotli.zip && \
+    unzip brotli.zip && \
+    mv ngx_brotli-$NGX_BROTLI_VERSION ngx_brotli && \
+    mv brotli-$BROTLI_VERSION/* ngx_brotli/deps/brotli && \
+    apt-get update && \
     apt-get install -y make g++ libssl-dev libxslt-dev libgd2-xpm-dev libgeoip-dev libpam-dev && \
     cd /opt && \
     wget http://nginx.org/download/nginx-$NGINX_VERSION.tar.gz && \
@@ -49,7 +61,8 @@ RUN apt-get update && \
 	--with-http_sub_module \
 	--with-http_xslt_module \
 	--with-mail \
-	--with-mail_ssl_module && \
+	--with-mail_ssl_module \
+	--add-module=../ngx_brotli && \
     make && \
     make install && \
     mkdir -p /var/lib/nginx/ && \

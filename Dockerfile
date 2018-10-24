@@ -5,13 +5,13 @@ ENV OPENSSL_VERSION 1.1.1
 ENV PCRE_VERSION 8.41
 ENV ZLIB_VERSION 1.2.11
 
-# Using master from ngx_brotli
-# Using brotli linked from ngx_brotli master at /deps/brotli (see https://github.com/google/ngx_brotli/tree/master/deps)
-ENV NGX_BROTLI_VERSION bfd2885b2da4d763fed18f49216bb935223cd34b
-ENV BROTLI_VERSION 222564a95d9ab58865a096b8d9f7324ea5f2e03e
+# ngx_brotli Sep 3 2018 (add ubuntu 18.04 libbrotli-dev path)
+# Brotli 1.0.7
+ENV NGX_BROTLI_VERSION 8104036af9cff4b1d34f22d00ba857e2a93a243c
+ENV BROTLI_VERSION d6d98957ca8ccb1ef45922e978bb10efca0ea541
 
 RUN cd /opt && \
-    wget https://github.com/google/ngx_brotli/archive/$NGX_BROTLI_VERSION.zip -O ngx_brotli.zip && \
+    wget https://github.com/eustas/ngx_brotli/archive/$NGX_BROTLI_VERSION.zip -O ngx_brotli.zip && \
     wget https://github.com/google/brotli/archive/$BROTLI_VERSION.zip -O brotli.zip && \
     unzip ngx_brotli.zip && \
     unzip brotli.zip && \

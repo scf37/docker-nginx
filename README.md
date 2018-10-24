@@ -8,7 +8,7 @@ virtual host config added.
 As usual, this image tries to keep moving parts under /data folder.
 
 Documentation for Brotli module is here: https://github.com/google/ngx_brotli
-Note: as Brotli compressor is slow, it is REALLY good idea to use pre-compressed resources via `brotli_static` directive.
+Note: as Brotli compressor can be 2x slower than gzip for default compression level (6) and less useful on lower compression levels, it is good idea to use Brotli filter for HTML only.
 
 Typical usage:
 

@@ -1,8 +1,8 @@
 FROM scf37/base
 
-ENV NGINX_VERSION 1.17.2
-ENV OPENSSL_VERSION 1.1.1c
-ENV PCRE_VERSION 8.43
+ENV NGINX_VERSION 1.17.10
+ENV OPENSSL_VERSION 1.1.1g
+ENV PCRE_VERSION 8.44
 ENV ZLIB_VERSION 1.2.11
 
 # ngx_brotli Sep 3 2018 (add ubuntu 18.04 libbrotli-dev path)
@@ -18,13 +18,13 @@ RUN cd /opt && \
     mv ngx_brotli-$NGX_BROTLI_VERSION ngx_brotli && \
     mv brotli-$BROTLI_VERSION/* ngx_brotli/deps/brotli && \
     apt-get update && \
-    apt-get install -y make g++ libssl-dev libxslt-dev libgd2-xpm-dev libgeoip-dev libpam-dev && \
+    apt-get install -y make g++ libssl-dev libxslt-dev libgd-dev libgeoip-dev libpam-dev libxslt1.1 libgd3 && \
     cd /opt && \
     wget http://nginx.org/download/nginx-$NGINX_VERSION.tar.gz && \
     tar xfz nginx-$NGINX_VERSION.tar.gz && \
     wget http://zlib.net/zlib-$ZLIB_VERSION.tar.gz && \
     tar xfz zlib-$ZLIB_VERSION.tar.gz && \
-    wget ftp://ftp.csx.cam.ac.uk/pub/software/programming/pcre/pcre-$PCRE_VERSION.tar.bz2 && \
+    wget https://ftp.pcre.org/pub/pcre/pcre-$PCRE_VERSION.tar.bz2 && \
     tar xfj pcre-$PCRE_VERSION.tar.bz2 && \
     wget https://www.openssl.org/source/openssl-$OPENSSL_VERSION.tar.gz && \
     tar xfz openssl-$OPENSSL_VERSION.tar.gz && \

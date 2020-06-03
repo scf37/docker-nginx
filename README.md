@@ -1,6 +1,16 @@
-Nginx 1.17.2 Docker image with HTTP/2 and Brotli support, most other modules included.
+Nginx 1.17.10 Docker image with HTTP/2 and Brotli support, most other modules included.
 
-To avoid problems with HTTP/2, DO NOT enable `ssl_prefer_server_ciphers`!
+
+Use this configuration for A+ score on ssllabs:
+```nginx
+ssl_session_cache shared:SSL:20m;
+ssl_session_timeout 10m;
+ssl_prefer_server_ciphers on;
+ssl_stapling on;
+ssl_dhparam dhparam.pem;
+ssl_ciphers HIGH:!aNULL:!MD5;
+ssl_protocols TLSv1.2 TLSv1.3;
+```
 
 If no configuration provided, this image puts default config to /data/conf folder. Default configuration contains no virtual hosts so nginx will not listen any ports until
 virtual host config added.

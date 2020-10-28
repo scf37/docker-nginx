@@ -1,4 +1,4 @@
-Nginx 1.17.10 Docker image with HTTP/2 and Brotli support, most other modules included.
+Nginx 1.19.4 Docker image with HTTP/2 and Brotli support, most other modules included.
 
 
 Use this configuration for A+ score on ssllabs:
